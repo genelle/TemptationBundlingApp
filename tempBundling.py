@@ -33,8 +33,28 @@ def main():
     
     #put while loop here, asks user what they would like to do
     #write up different functions for each option
-    task_to_update = raw_input("So what task would you like to update?")
     
+    while(True):
+        task_to_update = raw_input("So what task would you like to update?")
+        #need to put option in if user types in habit that doesn't exist
+        #or maybe just have user choose 1,2, etc.
+        cur.execute('SELECT habit_id, hourly from habits where habit_name = ? ', (task_to_update, ) )
+        task_info = cur.fetchone()
+       
+        try:
+            habit_id = task_info[0]
+            hourly = task_info[1]
+            if hourly == 0:
+                #update the non hourly task for the user
+                #needs to take user_id as well
+                Upd_non_hourly_task(habit_id)
+            else:
+                #update the hourly task for the user
+                #needs to take user_id as well
+                Upd_hourly_task(habit_id)
+        except TypeError:
+            print "ooops"
+        
 
 
 def new_user():
@@ -80,8 +100,17 @@ def print_tasks(username):
         db_habit = cur.fetchone()
         
         print "{} {}".format(db_habit[0].ljust(20),db_habit[1].ljust(20))
+        
+def Upd_non_hourly_task(username, habit_id):
+    """
+    Updates the non-hourly task for the user
+    """
+    #Need to add database to track users info before writing this code
+    #also need to add keeping track of user_id everywhere I grab username
+    return True 
     
-    
+def Upd_hourly_task(habit_id):
+    return True
     
 main()
 
