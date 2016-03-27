@@ -4,8 +4,8 @@ This is the first full-fledged (i.e. non-kata or homework) program that I have w
 
 To-do for current state of program (command line):
 **The following need to happen next time I work on this**
-* need to create table to track what habits users have completed and what rewards they have cashed in
-* need to keep track of user_id within program so I can add what the above new table will track easier
+* Set up what happens in each menu item
+* FULL WRITEUP OF EACH FUNCTION - and get into habit (haha) of doing this after each time I make edits
 
 * set up cycling of points to "savings" for higher point amount rewards
 * set up a more user friendly menu to choose from after establishing user id, and the functions to go along with them
